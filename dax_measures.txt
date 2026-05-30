@@ -1,0 +1,139 @@
+=====================================================================================================DAX MEASURES & CALCULATED COLUMNS SPECIFICATION
+=======================
+
+Project Name: Swiggy Performance Analytics Dashboard
+
+Domain: Food-Tech, Logistics Performance & Revenue Operations
+
+
+
+-----------------------------------------------------------------------------------------
+
+1. TOTAL REVENUE / GROSS MERCHANDISE VALUE (GMV)
+
+-----------------------------------------------------------------------------------------
+
+Type: Measure
+
+Description: Calculates the aggregate value of all recorded orders to establish the baseline GMV.
+
+DAX Formula:
+Total GMV = SUM(Orders[OrderValue])
+
+
+Technical Context: Used as the core financial performance indicator across all trend lines, 
+geographic charts, and executive scorecard visuals.
+
+
+
+-----------------------------------------------------------------------------------------
+
+2. TOTAL ORDERS COMPARED BY UNFULFILLED STATUS
+
+-----------------------------------------------------------------------------------------
+
+Type: Measure
+
+Description: Tallies total completed deliveries to evaluate supply chain performance.
+
+DAX Formula:
+Successful Deliveries = CALCULATE(
+    COUNT(Orders[OrderID]),
+    Orders[OrderStatus] = "Delivered"
+)
+
+
+
+Type: Measure
+
+Description: Counts transactions where order processing or logistics broke down completely.
+
+DAX Formula:
+Cancelled Orders = CALCULATE(
+    COUNT(Orders[OrderID]),
+    Orders[OrderStatus] = "Cancelled"
+)
+
+
+
+Type: Measure
+
+Description: Computes the operational order failure rate as a core platform health KPI.
+
+DAX Formula:
+Cancellation Rate = DIVIDE([Cancelled Orders], COUNT(Orders[OrderID]), 0)
+
+
+Technical Context: Implements protective DIVIDE logic to prevent division-by-zero runtime 
+errors within card visuals when applying narrow regional slicers.
+
+
+
+-----------------------------------------------------------------------------------------
+
+3. AVERAGE ORDER VALUE (AOV)
+
+-----------------------------------------------------------------------------------------
+
+Type: Measure
+
+Description: Computes the average monetary value per processed transaction.
+
+DAX Formula:
+Average Order Value = AVERAGE(Orders[OrderValue])
+
+
+Technical Context: Critical for analyzing customer ticket size patterns across restaurant 
+categories (e.g., Casual Dining vs. Quick Bites).
+
+
+
+-----------------------------------------------------------------------------------------
+
+4. LOGISTICS EFFICIENCY & SLA MONITORING
+
+-----------------------------------------------------------------------------------------
+
+Type: Measure
+
+Description: Tracks the average duration in minutes for order transit cycles.
+
+DAX Formula:
+Avg Delivery Time (Mins) = AVERAGE(Orders[DeliveryTimeMins])
+
+
+Technical Context: Mapped across historical trend lines and geographic maps to uncover 
+logistical bottlenecks during peak dinner periods.
+
+
+
+-----------------------------------------------------------------------------------------
+
+5. TIME-INTELLIGENCE: REVENUE MONTH-OVER-MONTH (MoM) GROWTH
+
+-----------------------------------------------------------------------------------------
+
+Type: Measure
+
+Description: Dynamically evaluates Month-Over-Month revenue variance using the Date table.
+
+DAX Formula:
+GMV Previous Month = CALCULATE(
+    [Total GMV],
+    DATEADD(DateTable[Date], -1, MONTH)
+)
+
+
+
+Type: Measure
+
+Description: Computes the explicit percentage growth or contraction in platform revenue.
+
+DAX Formula:
+MoM GMV Growth % = DIVIDE([Total GMV] - [GMV Previous Month], [GMV Previous Month], 0)
+
+
+Technical Context: Relies on a continuous calendar table (`DateTable`) to calculate shifting 
+historical trends accurately without temporal alignment gaps.
+
+

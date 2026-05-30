@@ -1,6 +1,6 @@
 # 📊 Swiggy Performance Analytics Dashboard
 
-[! [Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
+[![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
 [![DAX](https://img.shields.io/badge/DAX-Data_Analysis_Expressions-0559C2?style=for-the-badge)](https://learn.microsoft.com/en-us/dax/)
 [![Data Analytics](https://img.shields.io/badge/Analytics-Advanced_KPIs-green?style=for-the-badge)](#)
 [![Status](https://img.shields.io/badge/Status-Production_Ready-success?style=for-the-badge)](#)
@@ -51,7 +51,7 @@ The primary objective of this BI solution is to empower Regional Operations Mana
 * ![Restaurant Performance](screenshots/swiggy_restaurant_performance_analysis.JPG)
 
 ### 3. Customer Analysis Dashboard
-* ![Customer Analysis](screenshots/siwggy_customer_analysis.JPG)
+* ![Customer Analysis](screenshots/swiggy_customer_analysis.JPG)
 
 ### 4. Delivery Analysis Dashboard
 * ![Delivery Analysis](screenshots/swiggy_delivery_analysis.JPG)

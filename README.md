@@ -165,8 +165,8 @@ Home -> Transform Data -> Data Source Settings -> Change Source, and map the fil
 
 📧 Email: vivekkdeore001@gmail.com
 
-🔗 LinkedIn: https://linkedin.com/in/your-profile
+🔗 LinkedIn: https://linkedin.com/in/vivekkdeore
 
-🔗 GitHub: https://github.com/yourusername
+🔗 GitHub: https://github.com/vickykd-5
 
 `#powerbidashboard` `#businessintelligence` `#dax-measures` `#etl-powerquery` `#starschema` `#datamodeling` `#operationsanalytics` `#customer-cohorts` `#retail-analytics` `#portfolio-project`
